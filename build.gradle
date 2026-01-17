@@ -185,7 +185,7 @@ project(':vnc-client') {
 description 'VNC Client for java'
 apply plugin: 'application'
 apply plugin: 'com.github.johnrengelman.shadow'
-mainClassName = 'ru.dmerkushov.vnc.client.Main'
+mainClassName = 'ru.dmerkushov.vnc.client.ui.Main1'
 version = '3.0-SNAPSHOT'
 sourceCompatibility = '1.8'
 dependencies {
@@ -200,10 +200,7 @@ jar {
 }
 
 shadowJar {
-  if (gver < '7.0')
-    classifier = "jre11"
-  else
-    archiveClassifier = 'jre11'
+  if (gver < '7.0') classifier = "jre8" else archiveClassifier = 'jre8'
 }}
 
 

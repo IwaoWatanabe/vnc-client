@@ -46,7 +46,7 @@ public class VncCommon {
 
 	public static synchronized Set<RfbClientSession> getClientSessions () {
 		if (ru.dmerkushov.vnc.client.VncCommon.clientSessions == null) {
-			ru.dmerkushov.vnc.client.VncCommon.clientSessions = Collections.synchronizedSet (new LinkedHashSet<> ());
+			ru.dmerkushov.vnc.client.VncCommon.clientSessions = Collections.synchronizedSet (new LinkedHashSet<RfbClientSession> ());
 		}
 		return ru.dmerkushov.vnc.client.VncCommon.clientSessions;
 	}
@@ -56,7 +56,7 @@ public class VncCommon {
 	// HexDump
 	//
 	////////////////////////////////////////////////////////////////////////////
-	private static final Set<Byte> printable = new HashSet<> ();
+	private static final Set<Byte> printable = new HashSet<Byte> ();
 
 	static {
 		for (byte i = (byte) 0x20; i <= (byte) 0x40; i++) {        // Marks

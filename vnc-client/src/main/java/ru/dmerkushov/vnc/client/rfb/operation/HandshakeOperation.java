@@ -82,9 +82,9 @@ public class HandshakeOperation extends Operation {
 		if (logger.isLoggable (Level.INFO)) {
 			StringBuilder logMsgBuilder = new StringBuilder ();
 			logMsgBuilder.append ("Security types supported:");
-			securityTypes.forEach ((secType) -> {
+			for (RfbSecurityType secType : securityTypes) {
 				logMsgBuilder.append (" ").append (secType.name ());
-			});
+			}
 			logger.info (logMsgBuilder.toString ());
 		}
 

@@ -105,9 +105,9 @@ public class RfbClientSession {
 
 		this.uuid = UUID.randomUUID ();
 
-		this.sessionObjects = Collections.synchronizedMap (new LinkedHashMap<> ());
+		this.sessionObjects = Collections.synchronizedMap (new LinkedHashMap<String, Object> ());
 
-		this.vncViews = Collections.synchronizedSet (new HashSet<> ());
+		this.vncViews = Collections.synchronizedSet (new HashSet<VncView> ());
 
 		// Must do this to initialize a group for this session in thread-helper
 		ThreadHelper.getInstance ().addRunnable (this.getThreadGroupName (), new AbstractTHRunnable () {
