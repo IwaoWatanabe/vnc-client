@@ -7,12 +7,16 @@ import ru.dmerkushov.vnc.client.ui.DefaultSwingVncView;
 
 public class Main1 implements Runnable {
 java.io.PrintStream err = System.err;
+String addr = "localhost:5901";
 public void run() {
 err.println("VNC Client (Swing) started.");
+int idx = addr.indexOf(':');
+String host1 = addr.substring(0, idx);
+String port1 = addr.substring(idx + 1);
 
-String host = javax.swing.JOptionPane.showInputDialog("Host", "localhost");
+String host = javax.swing.JOptionPane.showInputDialog("Host", host1);
 err.println("host: " + host);
-int port = Integer.parseInt(javax.swing.JOptionPane.showInputDialog("Port", "5901"));
+int port = Integer.parseInt(javax.swing.JOptionPane.showInputDialog("Port", port1));
 err.println("port: " + port);
 javax.swing.JFrame frame = new javax.swing.JFrame("VNC (Swing)");
 frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
@@ -24,7 +28,6 @@ try {
 
     VncView vncView = new DefaultSwingVncView();
     vncView.setSession(session);
-
     frame.add(vncView.getSwingComponent());
     session.startSession();
     frame.setVisible(true);
@@ -36,6 +39,8 @@ try {
 }}
 
 public static void main(String[] args) throws Exception {
-    javax.swing.SwingUtilities.invokeLater(new Main1());
+    Main1 main = new Main1(); int offset = 0;
+    if (offset < args.length) main.addr = args[offset];
+    javax.swing.SwingUtilities.invokeLater(main);
 }}
 
