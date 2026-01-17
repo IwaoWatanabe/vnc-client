@@ -1,3 +1,4 @@
 
 include ':thread-helper'
 include ':vnc-client'
+include ':vnc-client-fx'

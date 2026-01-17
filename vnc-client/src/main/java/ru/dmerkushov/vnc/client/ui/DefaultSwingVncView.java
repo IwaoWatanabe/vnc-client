@@ -5,7 +5,6 @@
  */
 package ru.dmerkushov.vnc.client.ui;
 
-import javafx.scene.Node;
 import ru.dmerkushov.vnc.client.rfb.session.RfbClientSession;
 import ru.dmerkushov.vnc.client.rfb.session.RfbFramebuffer;
 import ru.dmerkushov.vnc.client.ui.events.SwingVncViewKeyboardEvents;
@@ -84,11 +83,6 @@ public final class DefaultSwingVncView extends JComponent implements VncView {
 	@Override
 	public JComponent getSwingComponent () {
 		return this;
-	}
-
-	@Override
-	public Node getJavafxNode () {
-		return null;
 	}
 
 	@Override

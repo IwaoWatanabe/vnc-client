@@ -46,14 +46,6 @@ public interface VncView {
 	javax.swing.JComponent getSwingComponent ();
 
 	/**
-	 * Returns a JavaFX node representing this view, if this is a JavaFX-based
-	 * view, null otherwise
-	 *
-	 * @return
-	 */
-	javafx.scene.Node getJavafxNode ();
-
-	/**
 	 * Returns the preferred size of this view based on the framebuffer size
 	 *
 	 * @return

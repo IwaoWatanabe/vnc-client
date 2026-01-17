@@ -27,7 +27,7 @@ import ru.dmerkushov.vnc.client.rfb.session.RfbSessionException;
 import ru.dmerkushov.vnc.client.rfb.session.RfbSessionState;
 import ru.dmerkushov.vnc.client.rfb.session.password.UiPasswordSupplier;
 import ru.dmerkushov.vnc.client.ui.DefaultJavaFxVncView;
-import ru.dmerkushov.vnc.client.ui.VncView;
+import ru.dmerkushov.vnc.client.ui.VncView1;
 
 import javax.swing.JOptionPane;
 import java.util.logging.Level;
@@ -64,7 +64,7 @@ public class Main extends Application {
 		}
 		session.setPasswordSupplier (new UiPasswordSupplier ());
 
-		VncView vncView = new DefaultJavaFxVncView ();
+		VncView1 vncView = new DefaultJavaFxVncView ();
 		vncView.setSession (session);
 
 		try {

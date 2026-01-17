@@ -37,7 +37,7 @@ import ru.dmerkushov.vnc.client.rfb.messages.normal.c2s.PointerEventMessage;
 import ru.dmerkushov.vnc.client.rfb.messages.normal.c2s.PointerEventMessageSequence;
 import ru.dmerkushov.vnc.client.rfb.session.RfbClientSession;
 import ru.dmerkushov.vnc.client.rfb.session.RfbFramebuffer;
-import ru.dmerkushov.vnc.client.ui.events.Keysyms;
+import ru.dmerkushov.vnc.client.ui.events.Keysyms11;
 import sun.awt.image.IntegerComponentRaster;
 
 import javax.swing.JComponent;
@@ -56,7 +56,7 @@ import static ru.dmerkushov.vnc.client.VncCommon.vncPrefs;
 /**
  * @author dmerkushov
  */
-public class DefaultJavaFxVncView extends VncCanvas implements VncView {
+public class DefaultJavaFxVncView extends VncCanvas implements VncView1 {
 
 	private RfbClientSession session;
 
@@ -130,7 +130,7 @@ public class DefaultJavaFxVncView extends VncCanvas implements VncView {
 			}
 		});
 		this.addEventFilter (KeyEvent.KEY_PRESSED, (KeyEvent e) -> {
-			int keySym = Keysyms.translateFxKeyEvent (e);
+			int keySym = Keysyms11.translateFxKeyEvent (e);
 
 			logger.finest ("KeyEvent " + e + " : keysym " + keySym + " " + Integer.toHexString (keySym));
 
@@ -140,7 +140,7 @@ public class DefaultJavaFxVncView extends VncCanvas implements VncView {
 			e.consume ();
 		});
 		this.addEventFilter (KeyEvent.KEY_RELEASED, (KeyEvent e) -> {
-			int keySym = Keysyms.translateFxKeyEvent (e);
+			int keySym = Keysyms11.translateFxKeyEvent (e);
 
 			logger.finest ("KeyEvent " + e + " : keysym " + keySym + " " + Integer.toHexString (keySym));
 
@@ -169,7 +169,6 @@ public class DefaultJavaFxVncView extends VncCanvas implements VncView {
 		return null;
 	}
 
-	@Override
 	public Node getJavafxNode () {
 		return this;
 	}

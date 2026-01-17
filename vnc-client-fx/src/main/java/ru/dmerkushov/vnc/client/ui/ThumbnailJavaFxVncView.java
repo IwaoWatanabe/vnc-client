@@ -68,7 +68,6 @@ public class ThumbnailJavaFxVncView extends VncCanvas implements VncView {
 		return null;
 	}
 
-	@Override
 	public Node getJavafxNode () {
 		return this;
 	}

@@ -181,7 +181,34 @@ sourceCompatibility = '1.6'
 version = '0.5'
 }
 
+project(':vnc-client') {
 description 'VNC Client for java'
+apply plugin: 'application'
+apply plugin: 'com.github.johnrengelman.shadow'
+mainClassName = 'ru.dmerkushov.vnc.client.Main'
+version = '3.0-SNAPSHOT'
+sourceCompatibility = '1.8'
+dependencies {
+  implementation project(':thread-helper')
+  implementation 'com.jcraft:jzlib:1.1.3'
+  testImplementation 'junit:junit:4.13.1'
+}
+jar {
+  manifest {
+    attributes 'Main-Class': mainClassName
+  }
+}
+
+shadowJar {
+  if (gver < '7.0')
+    classifier = "jre11"
+  else
+    archiveClassifier = 'jre11'
+}}
+
+
+project(':vnc-client-fx') {
+description 'VNC Client for java with javafx'
 apply plugin: 'application'
 apply plugin: 'com.github.johnrengelman.shadow'
 mainClassName = 'ru.dmerkushov.vnc.client.Main'
@@ -190,8 +217,7 @@ sourceCompatibility = '1.8'
 sourceCompatibility = '11'
 dependencies {
   def javafxVersion = "11"
-  implementation project(':thread-helper')
-  implementation 'com.jcraft:jzlib:1.1.3'
+  implementation project(':vnc-client')
   implementation "org.openjfx:javafx-base:${javafxVersion}:win"
   implementation "org.openjfx:javafx-graphics:${javafxVersion}:win"
   implementation "org.openjfx:javafx-controls:${javafxVersion}:win"
@@ -208,7 +234,7 @@ shadowJar {
     classifier = "jre11"
   else
     archiveClassifier = 'jre11'
-}
+}}
 
 /*
 tasks.named('run') {
